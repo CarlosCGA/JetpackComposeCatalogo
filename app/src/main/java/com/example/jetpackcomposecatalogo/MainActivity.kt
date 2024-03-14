@@ -3,10 +3,10 @@ package com.example.jetpackcomposecatalogo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -45,25 +45,213 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyBox() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Box(modifier = Modifier
-            .height(200.dp)
-            .width(200.dp)
-            .background(Color.Red)
-            .verticalScroll(
-                rememberScrollState()
-            ),
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .width(200.dp)
+                .background(Color.Red)
+                .verticalScroll(
+                    rememberScrollState()
+                ),
             contentAlignment = Alignment.BottomCenter
         ) {
             Text(
-                text = "Texto de ejemplo",)
+                text = "Texto de ejemplo",
+            )
         }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4_XL)
+
+@Preview(showBackground = true, device = Devices.PIXEL_4_XL)
 @Composable
-fun PreviewCatalog() {
+fun PreviewMyBox() {
     JetpackComposeCatalogoTheme {
         MyBox()
     }
 }
+
+
+@Composable
+fun MyBalancedColumn() {
+    Column(modifier = Modifier.fillMaxSize()) {
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .weight(1f)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .weight(1f)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .weight(1f)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .weight(1f)
+        )
+    }
+
+}
+
+@Composable
+fun MyArrangementColumn() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceAround,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("Ejemplo1", modifier = Modifier.background(Color.Red))
+        Text("Ejemplo2", modifier = Modifier.background(Color.Yellow))
+        Text("Ejemplo3", modifier = Modifier.background(Color.Green))
+        Text("Ejemplo4", modifier = Modifier.background(Color.Cyan))
+    }
+}
+
+@Composable
+fun MyScrollableColumn() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.End
+    ) {
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo1", modifier = Modifier
+                .background(Color.Red)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo2", modifier = Modifier
+                .background(Color.Yellow)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo3", modifier = Modifier
+                .background(Color.Green)
+                .height(100.dp)
+        )
+        Text(
+            "Ejemplo4", modifier = Modifier
+                .background(Color.Cyan)
+                .height(100.dp)
+        )
+    }
+}
+
+
+@Preview(showBackground = true, device = Devices.PIXEL_4_XL)
+@Composable
+fun PreviewMyColumn() {
+    JetpackComposeCatalogoTheme {
+        MyBalancedColumn()
+        MyArrangementColumn()
+        MyScrollableColumn() //Can scroll because is the last component (other components have "fillMaxSize"). So if this component was not the last it can not be possible to scroll
+    }
+}
+
