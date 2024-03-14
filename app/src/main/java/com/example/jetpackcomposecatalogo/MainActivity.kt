@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
 
@@ -327,6 +329,19 @@ fun PreviewMyRow() {
 
 /**************************************************************************************************/
 
+/** SPACER **/
+
+@Composable
+fun MySpacer(height: Dp, width: Dp) {
+    Spacer(
+        modifier = Modifier
+            .height(height)
+            .width(width)
+    )
+}
+
+/**************************************************************************************************/
+
 
 /** COMBINED LAYOUTS **/
 
@@ -341,6 +356,11 @@ fun MyComplexLayout() {
         ) {
 
         }
+
+        MySpacer(
+            height = 30.dp,
+            width = 50.dp
+        ) //In this case width size does not matter, because the composable over this have "fillMaxWidth"
 
         Row(
             modifier = Modifier
@@ -363,6 +383,11 @@ fun MyComplexLayout() {
                     .background(Color.Green)
             )
         }
+
+        MySpacer(
+            height = 30.dp,
+            width = 50.dp
+        ) //In this case width size does not matter, because the composable over this have "fillMaxWidth"
 
         Box(
             modifier = Modifier
