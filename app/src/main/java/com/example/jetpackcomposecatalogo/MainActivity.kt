@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -41,6 +43,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/** BOX **/
 
 @Composable
 fun MyBox() {
@@ -62,7 +65,6 @@ fun MyBox() {
     }
 }
 
-
 @Preview(showBackground = true, device = Devices.PIXEL_4_XL)
 @Composable
 fun PreviewMyBox() {
@@ -71,6 +73,10 @@ fun PreviewMyBox() {
     }
 }
 
+/**************************************************************************************************/
+
+
+/** COLUMN **/
 
 @Composable
 fun MyBalancedColumn() {
@@ -244,7 +250,6 @@ fun MyScrollableColumn() {
     }
 }
 
-
 @Preview(showBackground = true, device = Devices.PIXEL_4_XL)
 @Composable
 fun PreviewMyColumn() {
@@ -255,3 +260,64 @@ fun PreviewMyColumn() {
     }
 }
 
+/**************************************************************************************************/
+
+
+/** ROW **/
+
+@Composable
+fun MyArrangementRow() {
+    Row(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
+        Text(text = "Ejemplo1")
+        Text(text = "Ejemplo2")
+        Text(text = "Ejemplo3")
+        Text(text = "Ejemplo4")
+    }
+}
+
+@Composable
+fun MyScrollableRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalScroll(rememberScrollState()),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = "Ejemplo1", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo2", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo3", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo4", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo1", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo2", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo3", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo4", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo1", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo2", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo3", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo4", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo1", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo2", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo3", modifier = Modifier.width(100.dp))
+        Text(text = "Ejemplo4", modifier = Modifier.width(100.dp))
+    }
+}
+
+@Composable
+fun MyWeightRow() {
+    Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.Bottom) {
+        Text(text = "Ejemplo1", modifier = Modifier.weight(1F))
+        Text(text = "Ejemplo2", modifier = Modifier.weight(1F))
+        Text(text = "Ejemplo3", modifier = Modifier.weight(1F))
+        Text(text = "Ejemplo4", modifier = Modifier.weight(1F))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewMyRow() {
+    MyArrangementRow()
+    MyWeightRow()
+    MyScrollableRow()
+}
+
+/**************************************************************************************************/
