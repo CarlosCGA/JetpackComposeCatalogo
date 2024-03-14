@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -64,6 +66,7 @@ fun MyBox() {
         }
     }
 }
+
 
 @Preview(showBackground = true, device = Devices.PIXEL_4_XL)
 @Composable
@@ -250,6 +253,7 @@ fun MyScrollableColumn() {
     }
 }
 
+
 @Preview(showBackground = true, device = Devices.PIXEL_4_XL)
 @Composable
 fun PreviewMyColumn() {
@@ -312,12 +316,70 @@ fun MyWeightRow() {
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewMyRow() {
     MyArrangementRow()
     MyWeightRow()
     MyScrollableRow()
+}
+
+/**************************************************************************************************/
+
+
+/** COMBINED LAYOUTS **/
+
+@Composable
+fun MyComplexLayout() {
+    Column(modifier = Modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1F)
+                .background(Color.Cyan)
+        ) {
+
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1F)
+        ) {
+            Box(
+                modifier = Modifier
+                    .weight(1F)
+                    .fillMaxHeight()
+                    .background(Color.Red),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "Hola, soy Carlos :)")
+            }
+            Box(
+                modifier = Modifier
+                    .weight(1F)
+                    .fillMaxHeight()
+                    .background(Color.Green)
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1F)
+                .background(Color.Cyan)
+        ) {
+
+        }
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewMyComplexLayout() {
+    MyComplexLayout()
 }
 
 /**************************************************************************************************/
