@@ -31,7 +31,9 @@ fun MyConstraintLayout() {
                 .size(125.dp)
                 .background(Color.Blue)
                 .constrainAs(boxBlue) {
-
+                    top.linkTo(boxRed.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
                 }
         )
         Box(

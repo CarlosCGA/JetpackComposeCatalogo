@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun MyConstraintLayout() {
+fun SecondExercise() {
 
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
         val (boxRed, boxBlue, boxYellow, boxMagenta, boxGreen) = createRefs()
@@ -68,6 +68,6 @@ fun MyConstraintLayout() {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewMyConstraintLayout() {
-    MyConstraintLayout()
+fun PreviewSecondExercise() {
+    SecondExercise()
 }

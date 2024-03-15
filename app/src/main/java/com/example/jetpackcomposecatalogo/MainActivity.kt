@@ -3,16 +3,17 @@ package com.example.jetpackcomposecatalogo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,6 +24,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
+import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
+import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
+import com.example.jetpackcomposecatalogo.composables.MyBox
+import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
+import com.example.jetpackcomposecatalogo.composables.MyConstraintLayout
+import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutGuideline
+import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
+import com.example.jetpackcomposecatalogo.composables.MyWeightRow
+import com.example.jetpackcomposecatalogo.exercises.FirstExercise
+import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,10 +44,48 @@ class MainActivity : ComponentActivity() {
             JetpackComposeCatalogoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState()),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyComplexLayout()
+                    Column {
+                        MyDivider(title = "MyBox")
+                        MyBox()
+
+                        MyDivider(title = "MyBalancedColumn")
+                        MyBalancedColumn()
+
+                        MyDivider(title = "MyArrangementColumn")
+                        MyArrangementColumn()
+
+                        //MyDivider(title = "MyScrollableColumn")
+                        //MyScrollableColumn()
+
+                        MyDivider(title = "MyArrangementRow")
+                        MyArrangementRow()
+
+                        MyDivider(title = "MyScrollableRow")
+                        MyScrollableRow()
+
+                        MyDivider(title = "MyWeightRow")
+                        MyWeightRow()
+
+                        MyDivider(title = "MyComplexLayout")
+                        MyComplexLayout()
+
+                        MyDivider(title = "FirstExercise")
+                        FirstExercise()
+
+                        MyDivider(title = "MyConstraintLayout")
+                        MyConstraintLayout()
+
+                        MyDivider(title = "SecondExercise")
+                        SecondExercise()
+
+                        MyDivider(title = "MyConstraintLayoutGuideline")
+                        MyConstraintLayoutGuideline()
+                    }
                 }
             }
         }
@@ -55,69 +105,65 @@ fun MySpacer(height: Dp, width: Dp) {
 
 /**************************************************************************************************/
 
-
-/** COMBINED LAYOUTS **/
-
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MyComplexLayout() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1F)
-                .background(Color.Cyan)
-        ) {
-
-        }
-
-        MySpacer(
-            height = 30.dp,
-            width = 50.dp
-        ) //In this case width size does not matter, because the composable over this have "fillMaxWidth"
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1F)
-        ) {
-            Box(
-                modifier = Modifier
-                    .weight(1F)
-                    .fillMaxHeight()
-                    .background(Color.Red),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(text = "Hola, soy Carlos :)")
-            }
-            Box(
-                modifier = Modifier
-                    .weight(1F)
-                    .fillMaxHeight()
-                    .background(Color.Green)
-            )
-        }
-
-        MySpacer(
-            height = 30.dp,
-            width = 50.dp
-        ) //In this case width size does not matter, because the composable over this have "fillMaxWidth"
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1F)
-                .background(Color.Cyan)
-        ) {
-
-        }
+fun MyDivider(title: String) {
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        MySpacer(height = 15.dp, width = 0.dp)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
+        Text(modifier = Modifier.basicMarquee(), maxLines = 1, text = title)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
     }
 }
 
-
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewMyComplexLayout() {
-    MyComplexLayout()
-}
+fun PreviewMain() {
+    JetpackComposeCatalogoTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Column {
+                MyDivider(title = "MyBox")
+                MyBox()
 
-/**************************************************************************************************/
+                MyDivider(title = "MyBalancedColumn")
+                MyBalancedColumn()
+
+                MyDivider(title = "MyArrangementColumn")
+                MyArrangementColumn()
+
+                //MyDivider(title = "MyScrollableColumn")
+                //MyScrollableColumn()
+
+                MyDivider(title = "MyArrangementRow")
+                MyArrangementRow()
+
+                MyDivider(title = "MyScrollableRow")
+                MyScrollableRow()
+
+                MyDivider(title = "MyWeightRow")
+                MyWeightRow()
+
+                MyDivider(title = "MyComplexLayout")
+                MyComplexLayout()
+
+                MyDivider(title = "FirstExercise")
+                FirstExercise()
+
+                MyDivider(title = "MyConstraintLayout")
+                MyConstraintLayout()
+
+                MyDivider(title = "SecondExercise")
+                SecondExercise()
+
+                MyDivider(title = "MyConstraintLayoutGuideline")
+                MyConstraintLayoutGuideline()
+            }
+        }
+    }
+}
