@@ -93,6 +93,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyConstraintLayoutChain")
                         MyConstraintLayoutChain()
+
+                        MyDivider(title = "MyFirstState")
+                        MyFirstState()
                     }
                 }
             }
@@ -177,6 +180,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyConstraintLayoutChain")
                 MyConstraintLayoutChain()
+
+                MyDivider(title = "MyFirstState")
+                MyFirstState()
             }
         }
     }
