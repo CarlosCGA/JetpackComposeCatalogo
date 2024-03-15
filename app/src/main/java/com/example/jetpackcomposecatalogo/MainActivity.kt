@@ -30,6 +30,7 @@ import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayout
+import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutGuideline
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
@@ -85,6 +86,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyConstraintLayoutGuideline")
                         MyConstraintLayoutGuideline()
+
+                        MyDivider(title = "MyConstraintLayoutBarrier")
+                        MyConstraintLayoutBarrier()
                     }
                 }
             }
