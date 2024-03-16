@@ -35,6 +35,7 @@ import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutChain
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutGuideline
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MyText
+import com.example.jetpackcomposecatalogo.composables.MyTextField
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
@@ -100,6 +101,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyText")
                         MyText()
+
+                        MyDivider(title = "MyTextField")
+                        MyTextField()
                     }
                 }
             }
@@ -190,6 +194,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyText")
                 MyText()
+
+                MyDivider(title = "MyTextField")
+                MyTextField()
             }
         }
     }
