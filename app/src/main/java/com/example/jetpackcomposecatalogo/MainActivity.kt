@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -32,6 +33,7 @@ import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
+import com.example.jetpackcomposecatalogo.composables.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutBarrier
@@ -114,6 +116,9 @@ class MainActivity : ComponentActivity() {
                         var favoriteColor by remember { mutableStateOf("") }
                         MyDivider(title = "MyOutlinedTextField")
                         MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
+
+                        MyDivider(title = "MyButton")
+                        MyButton(applicationContext)
                     }
                 }
             }
@@ -212,6 +217,9 @@ fun PreviewMain() {
                 var favoriteColor by remember { mutableStateOf("") }
                 MyDivider(title = "MyOutlinedTextField")
                 MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
+
+                MyDivider(title = "MyButton")
+                MyButton(LocalContext.current)
             }
         }
     }
