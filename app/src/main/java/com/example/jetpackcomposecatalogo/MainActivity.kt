@@ -38,6 +38,7 @@ import com.example.jetpackcomposecatalogo.composables.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutChain
 import com.example.jetpackcomposecatalogo.composables.MyConstraintLayoutGuideline
+import com.example.jetpackcomposecatalogo.composables.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MyText
@@ -118,6 +119,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyButton")
                         MyButton()
+
+                        MyDivider(title = "MyOutlinedButton")
+                        MyOutlinedButton()
                     }
                 }
             }
@@ -219,6 +223,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyButton")
                 MyButton()
+
+                MyDivider(title = "MyOutlinedButton")
+                MyOutlinedButton()
             }
         }
     }
