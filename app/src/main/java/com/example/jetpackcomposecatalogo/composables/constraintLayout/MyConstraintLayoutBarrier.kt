@@ -1,4 +1,4 @@
-package com.example.jetpackcomposecatalogo.composables
+package com.example.jetpackcomposecatalogo.composables.constraintLayout
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,49 +9,45 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun MyConstraintLayoutChain() {
+fun MyConstraintLayoutBarrier() {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
         val (boxRed, boxGreen, boxYellow) = createRefs()
 
+        //Create barrier (at the end of the red and green box) that can not pass through outer composable
+        val endBarrier = createEndBarrier(boxRed, boxGreen)
+
         Box(modifier = Modifier
-            .size(75.dp)
+            .size(125.dp)
             .background(Color.Green)
             .constrainAs(boxGreen) {
-                start.linkTo(parent.start)
-                end.linkTo(boxRed.start)
+                start.linkTo(parent.start, margin = 16.dp)
             })
 
         Box(modifier = Modifier
-            .size(75.dp)
+            .size(235.dp)
             .background(Color.Red)
             .constrainAs(boxRed) {
-                start.linkTo(boxGreen.end)
-                end.linkTo(boxYellow.start)
+                top.linkTo(boxGreen.bottom)
+                start.linkTo(parent.start, margin = 32.dp)
             })
 
 
         Box(modifier = Modifier
-            .size(75.dp)
+            .size(50.dp)
             .background(Color.Yellow)
             .constrainAs(boxYellow) {
-                start.linkTo(boxRed.end)
-                end.linkTo(parent.end)
+                start.linkTo(endBarrier)
             })
-
-        //Exists verticalChain too
-        //Deafult is Chainstyle.Spread
-        createHorizontalChain(boxRed, boxGreen, boxYellow, chainStyle = ChainStyle.SpreadInside)
 
     }
 }
 
-@Preview()
+@Preview(showBackground = true)
 @Composable
-fun PreviewMyConstraintLayoutChain() {
-    MyConstraintLayoutChain()
+fun PreviewMyConstraintLayoutBarrier() {
+    MyConstraintLayoutBarrier()
 }
