@@ -34,6 +34,7 @@ import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
+import com.example.jetpackcomposecatalogo.composables.MyImage
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
@@ -126,6 +127,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyTextButton")
                         MyTextButton()
+
+                        MyDivider(title = "MyImage")
+                        MyImage()
                     }
                 }
             }
@@ -233,6 +237,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyTextButton")
                 MyTextButton()
+
+                MyDivider(title = "MyImage")
+                MyImage()
             }
         }
     }

@@ -15,7 +15,7 @@ import com.example.jetpackcomposecatalogo.R
 fun MyImage() {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.ic_launcher_background),
             contentDescription = "Android icon"
         )
     }
