@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun MyOutlinedButton() {
+fun MyTextButton() {
     var isEnabled by rememberSaveable {
         mutableStateOf(true)
     }
@@ -26,18 +26,18 @@ fun MyOutlinedButton() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        OutlinedButton(onClick = {
+        TextButton(onClick = {
             isEnabled = false
         },
             colors = ButtonColors(
-                containerColor = Color.Red,
-                contentColor = Color.Yellow,
+                containerColor = Color.Blue,
+                contentColor = Color.Magenta,
                 disabledContainerColor = Color.Gray,
-                disabledContentColor = Color.Red
+                disabledContentColor = Color.Magenta
             ),
             enabled = isEnabled
         ) {
-            Text(text = "Click me, I am an OutlinedButton!")
+            Text(text = "Click me, I am a TextButton!")
         }
     }
 }
@@ -45,6 +45,6 @@ fun MyOutlinedButton() {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewMyOutlinedButton() {
-    MyOutlinedButton()
+fun PreviewMyTextButton() {
+    MyTextButton()
 }

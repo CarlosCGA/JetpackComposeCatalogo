@@ -42,6 +42,7 @@ import com.example.jetpackcomposecatalogo.composables.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MyText
+import com.example.jetpackcomposecatalogo.composables.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.MyTextField
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
@@ -122,6 +123,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyOutlinedButton")
                         MyOutlinedButton()
+
+                        MyDivider(title = "MyTextButton")
+                        MyTextButton()
                     }
                 }
             }
@@ -226,6 +230,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyOutlinedButton")
                 MyOutlinedButton()
+
+                MyDivider(title = "MyTextButton")
+                MyTextButton()
             }
         }
     }

@@ -37,7 +37,7 @@ fun MyButton() {
             ),
             enabled = isEnabled
         ) {
-            Text(text = "Click me!")
+            Text(text = "Click me, I am a Button anymore!")
         }
     }
 }
