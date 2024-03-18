@@ -1,4 +1,4 @@
-package com.example.jetpackcomposecatalogo.composables
+package com.example.jetpackcomposecatalogo.composables.texts
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.basicMarquee

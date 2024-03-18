@@ -34,17 +34,18 @@ import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
+import com.example.jetpackcomposecatalogo.composables.MyIcon
 import com.example.jetpackcomposecatalogo.composables.MyImage
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutGuideline
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
-import com.example.jetpackcomposecatalogo.composables.MyOutlinedTextField
+import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
-import com.example.jetpackcomposecatalogo.composables.MyText
+import com.example.jetpackcomposecatalogo.composables.texts.MyText
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
-import com.example.jetpackcomposecatalogo.composables.MyTextField
+import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
@@ -130,6 +131,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyImage")
                         MyImage()
+
+                        MyDivider(title = "MyIcon")
+                        MyIcon()
                     }
                 }
             }
@@ -240,6 +244,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyImage")
                 MyImage()
+
+                MyDivider(title = "MyIcon")
+                MyIcon()
             }
         }
     }
