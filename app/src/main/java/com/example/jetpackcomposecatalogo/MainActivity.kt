@@ -25,7 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -118,7 +117,7 @@ class MainActivity : ComponentActivity() {
                         MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
 
                         MyDivider(title = "MyButton")
-                        MyButton(applicationContext)
+                        MyButton()
                     }
                 }
             }
@@ -219,7 +218,7 @@ fun PreviewMain() {
                 MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
 
                 MyDivider(title = "MyButton")
-                MyButton(LocalContext.current)
+                MyButton()
             }
         }
     }
