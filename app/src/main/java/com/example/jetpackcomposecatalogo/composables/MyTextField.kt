@@ -1,6 +1,5 @@
 package com.example.jetpackcomposecatalogo.composables
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -13,15 +12,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MyTextField() {
-    var inputText by remember { mutableStateOf(""/*"Default value (mainly empty)"*/) }
-
+fun MyTextField(name: String, onValueChange: (String) -> Unit, label: String) {
     Column(Modifier.fillMaxSize()) {
         TextField(
-            value = inputText, onValueChange = { newText -> inputText = newText },
-            label = { Text(text = "Escribe aqui lo que te sugiera la vida")}
+            value = name, onValueChange = onValueChange,
+            label = { Text(text = label)}
         )
     }
 }
@@ -29,5 +25,6 @@ fun MyTextField() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewMyTextField() {
-    MyTextField()
+    var inputText by remember { mutableStateOf(""/*"Default value (mainly empty)"*/) }
+    MyTextField(inputText, { newText -> inputText = newText }, "Name")
 }

@@ -14,15 +14,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MyOutlinedTextField() {
-    var myText by remember {
-        mutableStateOf("")
-    }
+fun MyOutlinedTextField(favoriteColor: String, onValueChange: (String)-> Unit, label: String) {
     Column {
         OutlinedTextField(
-            value = myText, onValueChange = { newText -> myText = newText },
+            value = favoriteColor, onValueChange = onValueChange,
             Modifier.padding(24.dp),
-            label = { Text(text = "Este es mi OutlinedTextField") },
+            label = { Text(text = label) },
 
         )
 
@@ -32,5 +29,6 @@ fun MyOutlinedTextField() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewMyOutlinedTextField() {
-    MyOutlinedTextField()
+    var favoriteColor by remember { mutableStateOf("") }
+    MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
 }
