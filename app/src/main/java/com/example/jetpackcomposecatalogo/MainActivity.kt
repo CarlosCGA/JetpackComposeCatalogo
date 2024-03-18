@@ -44,6 +44,7 @@ import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstra
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
+import com.example.jetpackcomposecatalogo.composables.MySwitch
 import com.example.jetpackcomposecatalogo.composables.texts.MyText
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
@@ -138,6 +139,9 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyProgressBar")
                         MyProgressBar()
+
+                        MyDivider(title = "MySwitch")
+                        MySwitch()
                     }
                 }
             }
@@ -254,6 +258,9 @@ fun PreviewMain() {
 
                 MyDivider(title = "MyProgressBar")
                 MyProgressBar()
+
+                MyDivider(title = "MySwitch")
+                MySwitch()
             }
         }
     }
