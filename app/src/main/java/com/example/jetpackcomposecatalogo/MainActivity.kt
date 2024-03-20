@@ -32,7 +32,7 @@ import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
-import com.example.jetpackcomposecatalogo.composables.MyCheckBox
+import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyIcon
@@ -50,6 +50,8 @@ import com.example.jetpackcomposecatalogo.composables.texts.MyText
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
+import com.example.jetpackcomposecatalogo.composables.checkBox.MyMultipleCheckBox
+import com.example.jetpackcomposecatalogo.composables.checkBox.myCheckBoxList
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
@@ -121,7 +123,11 @@ class MainActivity : ComponentActivity() {
 
                         var favoriteColor by remember { mutableStateOf("") }
                         MyDivider(title = "MyOutlinedTextField")
-                        MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
+                        MyOutlinedTextField(
+                            favoriteColor,
+                            { newText -> favoriteColor = newText },
+                            "Favorite color"
+                        )
 
                         MyDivider(title = "MyButton")
                         MyButton()
@@ -146,6 +152,20 @@ class MainActivity : ComponentActivity() {
 
                         MyDivider(title = "MyCheckBox")
                         MyCheckBox()
+
+                        val optionsList = listOf(
+                            "Do you like winter?",
+                            "Do you like summer?",
+                            "Have you got car?",
+                            "Have you got bike?",
+                            "Are you bald?"
+                        )
+                        val multipleCheckBox = myCheckBoxList(titlesList = optionsList)
+                        MyDivider(title = "MyMultipleCheckBox")
+                        multipleCheckBox.map {checkBoxInfo ->
+                            MyMultipleCheckBox(checkBoxInfo = checkBoxInfo)
+                        }
+
                     }
                 }
             }
@@ -243,7 +263,11 @@ fun PreviewMain() {
 
                 var favoriteColor by remember { mutableStateOf("") }
                 MyDivider(title = "MyOutlinedTextField")
-                MyOutlinedTextField(favoriteColor, { newText -> favoriteColor = newText}, "Favorite color")
+                MyOutlinedTextField(
+                    favoriteColor,
+                    { newText -> favoriteColor = newText },
+                    "Favorite color"
+                )
 
                 MyDivider(title = "MyButton")
                 MyButton()
