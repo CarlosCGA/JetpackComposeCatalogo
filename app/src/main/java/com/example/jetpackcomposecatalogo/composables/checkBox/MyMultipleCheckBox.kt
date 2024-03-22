@@ -1,5 +1,6 @@
 package com.example.jetpackcomposecatalogo.composables.checkBox
 
+import android.util.Log
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
@@ -16,7 +17,7 @@ import androidx.compose.ui.unit.dp
 
 data class CheckBoxInfo(
     val title: String,
-    val isChecked: Boolean,
+    var isChecked: Boolean,
     val onCheckedChange: (Boolean) -> Unit
 )
 
@@ -34,6 +35,7 @@ fun myCheckBoxList(titlesList: List<String>): List<CheckBoxInfo> {
 
 @Composable
 fun MyMultipleCheckBox(checkBoxInfo: CheckBoxInfo) {
+    Log.d("CARLOS", "${checkBoxInfo.title} IS ${checkBoxInfo.isChecked}")
 
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Checkbox(
