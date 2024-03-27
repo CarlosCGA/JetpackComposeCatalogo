@@ -29,6 +29,7 @@ import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyDivider
+import com.example.jetpackcomposecatalogo.composables.MyDropDownMenu
 import com.example.jetpackcomposecatalogo.composables.MyIcon
 import com.example.jetpackcomposecatalogo.composables.MyImage
 import com.example.jetpackcomposecatalogo.composables.MyProgressBar
@@ -225,6 +226,10 @@ fun AllMyContent() {
 
         MyDivider(title = "MyBadgeBox")
         MyBadgeBox()
+
+        val list = listOf("Fruit", "Towel", "Football", "Carlos", "Phones")
+        MyDivider(title = "MyDropDownMenu")
+        MyDropDownMenu(list)
     }
 }
 
