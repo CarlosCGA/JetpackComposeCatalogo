@@ -30,6 +30,7 @@ import com.example.jetpackcomposecatalogo.composables.MyDivider
 import com.example.jetpackcomposecatalogo.composables.MyIcon
 import com.example.jetpackcomposecatalogo.composables.MyImage
 import com.example.jetpackcomposecatalogo.composables.MyProgressBar
+import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
@@ -202,6 +203,9 @@ fun AllMyContent() {
                 onCheckBoxStateChange
             )
         }
+
+        MyDivider(title = "MyRadioButton")
+        MyRadioButton()
     }
 }
 
