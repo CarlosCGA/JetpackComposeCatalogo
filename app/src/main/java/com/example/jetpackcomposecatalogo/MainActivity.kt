@@ -21,6 +21,7 @@ import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
+import com.example.jetpackcomposecatalogo.composables.MyBadgeBox
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.MyCard
@@ -221,6 +222,9 @@ fun AllMyContent() {
 
         MyDivider(title = "MyCard")
         MyCard()
+
+        MyDivider(title = "MyBadgeBox")
+        MyBadgeBox()
     }
 }
 
