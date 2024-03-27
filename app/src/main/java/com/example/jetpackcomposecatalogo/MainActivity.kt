@@ -23,6 +23,7 @@ import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBadgeBox
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
+import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.MyCard
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
@@ -230,6 +231,9 @@ fun AllMyContent() {
         val list = listOf("Fruit", "Towel", "Football", "Carlos", "Phones")
         MyDivider(title = "MyDropDownMenu")
         MyDropDownMenu(list)
+
+        MyDivider(title = "MySlider")
+        MySlider()
     }
 }
 
