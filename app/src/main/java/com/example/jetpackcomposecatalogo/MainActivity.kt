@@ -31,6 +31,8 @@ import com.example.jetpackcomposecatalogo.composables.MyIcon
 import com.example.jetpackcomposecatalogo.composables.MyImage
 import com.example.jetpackcomposecatalogo.composables.MyProgressBar
 import com.example.jetpackcomposecatalogo.composables.MyRadioButton
+import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
+import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
 import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
@@ -206,6 +208,15 @@ fun AllMyContent() {
 
         MyDivider(title = "MyRadioButton")
         MyRadioButton()
+
+        MyDivider(title = "MyRadioButtonList")
+        MyRadioButtonList()
+
+        var selected by remember {
+            mutableStateOf("Carlos")
+        }
+        MyDivider(title = "MyRadioButtonListPro")
+        MyRadioButtonListPro(selected) { newSelected -> selected = newSelected }
     }
 }
 
