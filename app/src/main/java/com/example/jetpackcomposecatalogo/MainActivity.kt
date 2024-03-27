@@ -23,6 +23,7 @@ import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
 import com.example.jetpackcomposecatalogo.composables.MyBox
+import com.example.jetpackcomposecatalogo.composables.MyCard
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
@@ -217,6 +218,9 @@ fun AllMyContent() {
         }
         MyDivider(title = "MyRadioButtonListPro")
         MyRadioButtonListPro(selected) { newSelected -> selected = newSelected }
+
+        MyDivider(title = "MyCard")
+        MyCard()
     }
 }
 
