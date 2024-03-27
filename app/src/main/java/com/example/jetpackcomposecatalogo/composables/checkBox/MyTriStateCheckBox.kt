@@ -2,36 +2,42 @@ package com.example.jetpackcomposecatalogo.composables.checkBox
 
 import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.state.ToggleableState
 
 
 @Composable
-fun MyTriStateCheckBox(listOfCheckBoxInfo: List<CheckBoxInfo>) {
-    var state by rememberSaveable { mutableStateOf(ToggleableState.Off) }
-    TriStateCheckbox(state = state, onClick = {
-        state = when (state) {
-            ToggleableState.On -> {
-                listOfCheckBoxInfo.map {checkBoxInfo ->
-                    checkBoxInfo.isChecked = false
+fun MyTriStateCheckBox(myTriStateCheckBoxInfo: MyTriStateCheckBoxInfo) {
+    TriStateCheckbox(
+        state = myTriStateCheckBoxInfo.state,
+        onClick = {
+            when (myTriStateCheckBoxInfo.state) {
+                ToggleableState.On -> {
+                    myTriStateCheckBoxInfo.listOfCheckBoxInfo.map { checkBoxInfo ->
+                        checkBoxInfo.onCheckedChange.invoke(false)
+                    }
+                    myTriStateCheckBoxInfo.updateStateOfTriStateCheckBox.invoke(ToggleableState.Off)
                 }
-                ToggleableState.Off
-            }
 
-            ToggleableState.Off -> {
-                listOfCheckBoxInfo.map {checkBoxInfo ->
-                    checkBoxInfo.isChecked = true
+                ToggleableState.Off -> {
+                    myTriStateCheckBoxInfo.listOfCheckBoxInfo.map { checkBoxInfo ->
+                        checkBoxInfo.onCheckedChange.invoke(true)
+                    }
+                    myTriStateCheckBoxInfo.updateStateOfTriStateCheckBox.invoke(ToggleableState.On)
                 }
-                ToggleableState.On
-                //ToggleableState.Indeterminate
-            }
 
-            ToggleableState.Indeterminate -> {
-                ToggleableState.On
+                ToggleableState.Indeterminate -> {
+                    myTriStateCheckBoxInfo.listOfCheckBoxInfo.map { checkBoxInfo ->
+                        checkBoxInfo.onCheckedChange.invoke(true)
+                    }
+                    myTriStateCheckBoxInfo.updateStateOfTriStateCheckBox.invoke(ToggleableState.On)
+                }
             }
         }
-    })
+    )
 }
+
+data class MyTriStateCheckBoxInfo(
+    var state: ToggleableState,
+    val updateStateOfTriStateCheckBox: (ToggleableState) -> Unit,
+    val listOfCheckBoxInfo: List<CheckBoxInfo>
+)

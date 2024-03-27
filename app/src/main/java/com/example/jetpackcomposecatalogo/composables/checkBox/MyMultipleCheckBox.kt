@@ -1,6 +1,5 @@
 package com.example.jetpackcomposecatalogo.composables.checkBox
 
-import android.util.Log
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
@@ -23,24 +22,32 @@ data class CheckBoxInfo(
 
 @Composable
 fun myCheckBoxList(titlesList: List<String>): List<CheckBoxInfo> {
-    return titlesList.map {title ->
+    return titlesList.map { title ->
         var state by rememberSaveable { mutableStateOf(false) }
         CheckBoxInfo(
             title = title,
             isChecked = state,
-            onCheckedChange = { newState -> state = newState }
+            onCheckedChange = { newState ->
+                state = newState
+            }
         )
     }
 }
 
 @Composable
-fun MyMultipleCheckBox(checkBoxInfo: CheckBoxInfo) {
-    Log.d("CARLOS", "${checkBoxInfo.title} IS ${checkBoxInfo.isChecked}")
-
-    Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+fun MyMultipleCheckBox(
+    checkBoxInfo: CheckBoxInfo,
+    onCheckBoxStateChange: (() -> Unit)?
+) {
+    Row(modifier = Modifier.padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Checkbox(
             checked = checkBoxInfo.isChecked,
-            onCheckedChange = { checkBoxInfo.onCheckedChange(!checkBoxInfo.isChecked) },
+            onCheckedChange = {
+                checkBoxInfo.onCheckedChange.invoke(!checkBoxInfo.isChecked)
+                onCheckBoxStateChange!!.invoke()
+            },
         )
         Text(text = checkBoxInfo.title)
     }
@@ -57,5 +64,5 @@ fun PreviewMyMultipleCheckBox() {
         isChecked = false,
         onCheckedChange = { newState -> state = newState }
     )
-    MyMultipleCheckBox(checkBoxInfo = checkBoxInfo)
+    MyMultipleCheckBox(checkBoxInfo = checkBoxInfo, onCheckBoxStateChange = null)
 }
