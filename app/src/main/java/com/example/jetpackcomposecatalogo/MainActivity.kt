@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -54,6 +56,10 @@ import com.example.jetpackcomposecatalogo.composables.checkBox.MyMultipleCheckBo
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyTriStateCheckBox
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyTriStateCheckBoxInfo
 import com.example.jetpackcomposecatalogo.composables.checkBox.myCheckBoxList
+import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
+import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
+import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
+import com.example.jetpackcomposecatalogo.composables.dialogs.AvatarGoogleAccountItem
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
@@ -234,6 +240,39 @@ fun AllMyContent() {
 
         MyDivider(title = "MySlider")
         MySlider()
+
+        var basicDialogShow by remember {
+            mutableStateOf(false)
+        }
+        MyDivider(title = "MyDialog")
+        Button(onClick = { basicDialogShow = true }) {
+            Text(text = "Push me for basic dialog! :)")
+        }
+        MyDialog(basicDialogShow, {basicDialogShow = false}, {basicDialogShow = false})
+
+        var simpleCustomDialogShow by remember {
+            mutableStateOf(false)
+        }
+        MyDivider(title = "MySimpleCustomDialog")
+        Button(onClick = { simpleCustomDialogShow = true }) {
+            Text(text = "Push me for simple custom dialog! :)")
+        }
+        MySimpleCustomDialog(simpleCustomDialogShow) { simpleCustomDialogShow = false }
+
+        var googleChangeAccountDialogShow by remember {
+            mutableStateOf(false)
+        }
+        val accounts = listOf(
+            AvatarGoogleAccountItem(R.drawable.avatar, "carlos@gmail.com"),
+            AvatarGoogleAccountItem(R.drawable.avatar, "example@hotmail.com"),
+            AvatarGoogleAccountItem(R.drawable.avatar, "skull@gmail.com"),
+
+        )
+        MyDivider(title = "MyGoogleChangeAccountDialog")
+        Button(onClick = { googleChangeAccountDialogShow = true }) {
+            Text(text = "Push me for change your google account! (example)")
+        }
+        MyGoogleChangeAccountDialog(accounts, googleChangeAccountDialogShow) { googleChangeAccountDialogShow = false }
     }
 }
 
