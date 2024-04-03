@@ -60,6 +60,8 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.AvatarGoogleAccountItem
+import com.example.jetpackcomposecatalogo.composables.dialogs.ConfirmationDialogItem
+import com.example.jetpackcomposecatalogo.composables.dialogs.MyConfirmationDialog
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
@@ -241,6 +243,12 @@ fun AllMyContent() {
         MyDivider(title = "MySlider")
         MySlider()
 
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /***************************          DIALOGS            **********************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+
         var basicDialogShow by remember {
             mutableStateOf(false)
         }
@@ -266,13 +274,35 @@ fun AllMyContent() {
             AvatarGoogleAccountItem(R.drawable.avatar, "carlos@gmail.com"),
             AvatarGoogleAccountItem(R.drawable.avatar, "example@hotmail.com"),
             AvatarGoogleAccountItem(R.drawable.avatar, "skull@gmail.com"),
-
         )
         MyDivider(title = "MyGoogleChangeAccountDialog")
         Button(onClick = { googleChangeAccountDialogShow = true }) {
             Text(text = "Push me for change your google account! (example)")
         }
         MyGoogleChangeAccountDialog(accounts, googleChangeAccountDialogShow) { googleChangeAccountDialogShow = false }
+
+        var confirmationDialogShow by remember {
+            mutableStateOf(false)
+        }
+        val items = listOf(
+            ConfirmationDialogItem("None"),
+            ConfirmationDialogItem("Callisto"),
+            ConfirmationDialogItem("Ganymede"),
+            ConfirmationDialogItem("Luna"),
+            ConfirmationDialogItem("Oberon"),
+            ConfirmationDialogItem("Phobos"),
+            ConfirmationDialogItem("Dione"),
+            ConfirmationDialogItem("Towel"),
+        )
+        MyDivider(title = "MyConfirmationDialog")
+        Button(onClick = { confirmationDialogShow = true }) {
+            Text(text = "Push me for confirmation dialog!")
+        }
+        MyConfirmationDialog(items, confirmationDialogShow) { confirmationDialogShow = false }
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+
     }
 }
 

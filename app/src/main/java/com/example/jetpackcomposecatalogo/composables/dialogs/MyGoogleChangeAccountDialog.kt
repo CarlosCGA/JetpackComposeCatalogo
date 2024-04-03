@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.jetpackcomposecatalogo.R
+import com.example.jetpackcomposecatalogo.composables.texts.MyTitleDialog
 
 data class AvatarGoogleAccountItem(val avatar: Int, val email: String)
 
@@ -82,17 +83,7 @@ fun PreviewMyGoogleChangeAccountDialog() {
 }
 
 @Composable
-fun MyTitleDialog(text: String) {
-    Text(
-        modifier = Modifier.padding(vertical = 8.dp),
-        text = text,
-        fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
-    )
-}
-
-@Composable
-fun AccountItem(accountItem: AvatarGoogleAccountItem) {
+private fun AccountItem(accountItem: AvatarGoogleAccountItem) {
     Row(
         Modifier
             .fillMaxWidth()
@@ -116,7 +107,7 @@ fun AccountItem(accountItem: AvatarGoogleAccountItem) {
 
 @Preview
 @Composable
-fun PreviewAvatarImage() {
+fun PreviewAccountItem() {
     AccountItem(
         AvatarGoogleAccountItem(
             avatar = R.drawable.avatar,
