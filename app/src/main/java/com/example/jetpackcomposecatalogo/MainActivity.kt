@@ -62,6 +62,7 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDial
 import com.example.jetpackcomposecatalogo.composables.dialogs.AvatarGoogleAccountItem
 import com.example.jetpackcomposecatalogo.composables.dialogs.ConfirmationDialogItem
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyConfirmationDialog
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.MySimpleRecyclerView
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
@@ -303,6 +304,18 @@ fun AllMyContent() {
         /******************************************************************************************/
         /******************************************************************************************/
 
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /************************          RECYCLERVIEWS            *******************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+        MyDivider(title = "MySimpleRecyclerView")
+        MySimpleRecyclerView()
+
+
+        /******************************************************************************************/
+        /******************************************************************************************/
     }
 }
 
