@@ -3,6 +3,7 @@ package com.example.jetpackcomposecatalogo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
@@ -60,6 +61,7 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerView
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewStickyHeader
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewWithButton
 import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.texts.MyText
@@ -69,6 +71,7 @@ import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -87,6 +90,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
 fun AllMyContent() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -327,12 +331,15 @@ fun AllMyContent() {
         MyDivider(title = "MySuperHeroRecyclerViewWithButton")
         MySuperHeroRecyclerViewWithButton()
 
+        MyDivider(title = "MySuperHeroRecyclerViewStickyHeader")
+        MySuperHeroRecyclerViewStickyHeader()
 
         /******************************************************************************************/
         /******************************************************************************************/
     }
 }
 
+@ExperimentalFoundationApi
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewMain() {
