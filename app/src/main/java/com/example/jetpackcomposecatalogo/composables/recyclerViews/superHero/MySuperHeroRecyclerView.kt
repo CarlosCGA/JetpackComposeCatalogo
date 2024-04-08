@@ -19,7 +19,6 @@ fun MySuperHeroRecyclerView() {
         items(getSuperHeroes()) { superHero ->
             SuperHeroItem(superHero = superHero)
         }
-
     }
 }
 

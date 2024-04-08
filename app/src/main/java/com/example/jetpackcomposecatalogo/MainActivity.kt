@@ -60,6 +60,7 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerView
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewWithButton
 import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.texts.MyText
 import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
@@ -322,6 +323,9 @@ fun AllMyContent() {
         MyDivider(title = "MySuperHeroGridView")
         MySuperHeroGridView()
         */
+
+        MyDivider(title = "MySuperHeroRecyclerViewWithButton")
+        MySuperHeroRecyclerViewWithButton()
 
 
         /******************************************************************************************/
