@@ -33,6 +33,7 @@ import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.MyCard
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyDivider
+import com.example.jetpackcomposecatalogo.composables.MyDrawer
 import com.example.jetpackcomposecatalogo.composables.MyDropDownMenu
 import com.example.jetpackcomposecatalogo.composables.MyIcon
 import com.example.jetpackcomposecatalogo.composables.MyImage
@@ -40,7 +41,6 @@ import com.example.jetpackcomposecatalogo.composables.MyProgressBar
 import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
-import com.example.jetpackcomposecatalogo.composables.MyScaffold
 import com.example.jetpackcomposecatalogo.composables.MyScrollableColumn
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MySlider
@@ -113,7 +113,8 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(Routes.MyScaffold.route) {
-                            MyScaffold(navigationController)
+                            //MyScaffold(navigationController)
+                            MyDrawer(navigationController)
                         }
                     }
 

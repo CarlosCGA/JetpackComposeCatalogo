@@ -8,6 +8,7 @@ import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,22 +22,27 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -56,9 +62,50 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcomposecatalogo.composables.model.Routes
 import kotlinx.coroutines.launch
 
+@Composable
+fun MyDrawer(navigationController: NavHostController) {
+    val coroutineScope = rememberCoroutineScope()
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ModalDrawerSheet(modifier = Modifier
+                .height(725.dp)
+                .padding(end = 32.dp)) {
+                Spacer(modifier = Modifier.size(16.dp))
+
+                NavigationDrawerItem(
+                    label = { Text(text = "First option") },
+                    selected = false,
+                    onClick = { coroutineScope.launch { drawerState.close() } }
+                )
+
+                NavigationDrawerItem(
+                    label = { Text(text = "Second option") },
+                    selected = false,
+                    onClick = { coroutineScope.launch { drawerState.close() } }
+                )
+
+                NavigationDrawerItem(
+                    label = { Text(text = "Third option") },
+                    selected = false,
+                    onClick = { coroutineScope.launch { drawerState.close() } }
+                )
+
+            }
+        },
+        gesturesEnabled = false
+    ) {
+        MyScaffold(
+            navigationController = navigationController
+        ) { coroutineScope.launch { drawerState.open() } }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyScaffold(navigationController: NavHostController) {
+fun MyScaffold(navigationController: NavHostController, onClickDrawerButton: () -> Unit) {
     val colors = listOf(
         Color(0xFFffd7d7.toInt()),
         Color(0xFFffe9d6.toInt()),
@@ -73,7 +120,7 @@ fun MyScaffold(navigationController: NavHostController) {
     val scrollState = rememberLazyListState()
 
     Scaffold(
-        modifier = Modifier.height(350.dp),
+        modifier = Modifier.height(725.dp),
         snackbarHost = {
             SnackbarHost(
                 hostState = snackBarState,
@@ -86,8 +133,9 @@ fun MyScaffold(navigationController: NavHostController) {
         },
         topBar = {
             MyTopAppBar(
-                navigationController = navigationController
-            ) { coroutineScope.launch { snackBarState.showSnackbar("Click on $it") } }
+                navigationController = navigationController,
+                { coroutineScope.launch { snackBarState.showSnackbar("Click on $it") } }
+            ) { coroutineScope.launch { onClickDrawerButton.invoke() } }
         },
         content = { innerPadding ->
             LazyColumn(
@@ -108,27 +156,24 @@ fun MyScaffold(navigationController: NavHostController) {
         },
         bottomBar = { MyBottomNavigation() },
         floatingActionButton = { MyFloatingActionButton(scrollState) },
-        floatingActionButtonPosition = FabPosition.End,
+        floatingActionButtonPosition = FabPosition.End
     )
 }
 
 @ExperimentalMaterial3Api
 @Composable
-fun MyTopAppBar(navigationController: NavHostController, onClickIcon: (String) -> Unit) {
+fun MyTopAppBar(
+    navigationController: NavHostController,
+    onClickIcon: (String) -> Unit,
+    onClickDrawerButton: () -> Unit
+) {
     TopAppBar(
         title = { Text("Simple Scaffold Screen") },
         navigationIcon = {
             IconButton(
-                onClick = {
-                    navigationController.navigate(Routes.AllContent.route)
-                }
+                onClick = { onClickDrawerButton.invoke() }
             ) {
-                Icon(
-                    modifier = Modifier
-                        .rotate(90F),
-                    imageVector = Icons.Filled.KeyboardArrowDown,
-                    contentDescription = "Back"
-                )
+                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Back")
             }
         },
         actions = {
@@ -240,5 +285,5 @@ fun MyFloatingActionButton(scrollState: LazyListState) {
 @Composable
 fun PreviewMyScaffold() {
     val navigationController = rememberNavController()
-    MyScaffold(navigationController)
+    MyDrawer(navigationController)
 }
