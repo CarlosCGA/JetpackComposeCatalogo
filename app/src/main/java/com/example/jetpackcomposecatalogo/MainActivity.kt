@@ -25,11 +25,8 @@ import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBadgeBox
 import com.example.jetpackcomposecatalogo.composables.MyBalancedColumn
-import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MyBox
 import com.example.jetpackcomposecatalogo.composables.MyCard
-import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
-import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.MyComplexLayout
 import com.example.jetpackcomposecatalogo.composables.MyDivider
 import com.example.jetpackcomposecatalogo.composables.MyDropDownMenu
@@ -39,31 +36,33 @@ import com.example.jetpackcomposecatalogo.composables.MyProgressBar
 import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
-import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
-import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
-import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
-import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutGuideline
-import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
-import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
+import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MySwitch
-import com.example.jetpackcomposecatalogo.composables.texts.MyText
-import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
-import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
+import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
+import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
+import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.checkBox.CheckBoxInfo
+import com.example.jetpackcomposecatalogo.composables.checkBox.MyCheckBox
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyMultipleCheckBox
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyTriStateCheckBox
 import com.example.jetpackcomposecatalogo.composables.checkBox.MyTriStateCheckBoxInfo
 import com.example.jetpackcomposecatalogo.composables.checkBox.myCheckBoxList
-import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
-import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
-import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
+import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayout
+import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutBarrier
+import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutChain
+import com.example.jetpackcomposecatalogo.composables.constraintLayout.MyConstraintLayoutGuideline
 import com.example.jetpackcomposecatalogo.composables.dialogs.AvatarGoogleAccountItem
 import com.example.jetpackcomposecatalogo.composables.dialogs.ConfirmationDialogItem
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyConfirmationDialog
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.MySimpleRecyclerView
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.MySuperHeroRecyclerView
+import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
+import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
+import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerView
+import com.example.jetpackcomposecatalogo.composables.texts.MyOutlinedTextField
+import com.example.jetpackcomposecatalogo.composables.texts.MyText
+import com.example.jetpackcomposecatalogo.composables.texts.MyTextField
 import com.example.jetpackcomposecatalogo.exercises.FirstExercise
 import com.example.jetpackcomposecatalogo.exercises.SecondExercise
 import com.example.jetpackcomposecatalogo.ui.theme.JetpackComposeCatalogoTheme
@@ -311,11 +310,18 @@ fun AllMyContent() {
         /************************          RECYCLERVIEWS            *******************************/
         /******************************************************************************************/
         /******************************************************************************************/
+        /*
         MyDivider(title = "MySimpleRecyclerView")
         MySimpleRecyclerView()
+        */
 
         MyDivider(title = "MySuperHeroRecyclerView")
         MySuperHeroRecyclerView()
+
+        /*
+        MyDivider(title = "MySuperHeroGridView")
+        MySuperHeroGridView()
+        */
 
 
         /******************************************************************************************/
