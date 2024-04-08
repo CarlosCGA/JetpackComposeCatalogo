@@ -1,4 +1,4 @@
-package com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model
+package com.example.jetpackcomposecatalogo.composables.model
 
 import androidx.annotation.DrawableRes
 import com.example.jetpackcomposecatalogo.R

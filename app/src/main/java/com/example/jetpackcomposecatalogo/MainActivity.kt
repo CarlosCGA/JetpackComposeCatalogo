@@ -21,7 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBadgeBox
@@ -37,6 +40,8 @@ import com.example.jetpackcomposecatalogo.composables.MyProgressBar
 import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
+import com.example.jetpackcomposecatalogo.composables.MyScaffold
+import com.example.jetpackcomposecatalogo.composables.MyScrollableColumn
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MySwitch
@@ -60,6 +65,7 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MyConfirmationDial
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
+import com.example.jetpackcomposecatalogo.composables.model.Routes
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerView
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewStickyHeader
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewWithButton
@@ -83,7 +89,24 @@ class MainActivity : ComponentActivity() {
                         .verticalScroll(rememberScrollState()),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AllMyContent()
+                    val navigationController = rememberNavController()
+                    NavHost(
+                        navController = navigationController,
+                        startDestination = Routes.AllContent.route
+                    ) {
+                        composable(Routes.AllContent.route) {
+                            AllMyContent(navigationController)
+                        }
+
+                        composable(Routes.MyScrollableColumn.route) {
+                            MyScrollableColumn()
+                        }
+
+                        composable(Routes.MyScaffold.route) {
+                            MyScaffold(navigationController)
+                        }
+                    }
+
                 }
             }
         }
@@ -92,7 +115,8 @@ class MainActivity : ComponentActivity() {
 
 @ExperimentalFoundationApi
 @Composable
-fun AllMyContent() {
+fun AllMyContent(navigationController: NavHostController) {
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         MyDivider(title = "MyBox")
         MyBox()
@@ -103,8 +127,10 @@ fun AllMyContent() {
         MyDivider(title = "MyArrangementColumn")
         MyArrangementColumn()
 
-        //MyDivider(title = "MyScrollableColumn")
-        //MyScrollableColumn()
+        MyDivider(title = "MyScrollableColumn")
+        Button(onClick = { navigationController.navigate(Routes.MyScrollableColumn.route) }) {
+            Text(text = "MyScrollableColumn")
+        }
 
         MyDivider(title = "MyArrangementRow")
         MyArrangementRow()
@@ -262,7 +288,7 @@ fun AllMyContent() {
         Button(onClick = { basicDialogShow = true }) {
             Text(text = "Push me for basic dialog! :)")
         }
-        MyDialog(basicDialogShow, {basicDialogShow = false}, {basicDialogShow = false})
+        MyDialog(basicDialogShow, { basicDialogShow = false }, { basicDialogShow = false })
 
         var simpleCustomDialogShow by remember {
             mutableStateOf(false)
@@ -285,7 +311,10 @@ fun AllMyContent() {
         Button(onClick = { googleChangeAccountDialogShow = true }) {
             Text(text = "Push me for change your google account! (example)")
         }
-        MyGoogleChangeAccountDialog(accounts, googleChangeAccountDialogShow) { googleChangeAccountDialogShow = false }
+        MyGoogleChangeAccountDialog(
+            accounts,
+            googleChangeAccountDialogShow
+        ) { googleChangeAccountDialogShow = false }
 
         var confirmationDialogShow by remember {
             mutableStateOf(false)
@@ -336,22 +365,20 @@ fun AllMyContent() {
 
         /******************************************************************************************/
         /******************************************************************************************/
-    }
-}
 
-@ExperimentalFoundationApi
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PreviewMain() {
-    JetpackComposeCatalogoTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            AllMyContent()
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /****************************          SCAFFOLD            ********************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+        MyDivider(title = "MyScaffold")
+        Button(onClick = { navigationController.navigate(Routes.MyScaffold.route) }) {
+            Text(text = "MyScaffold")
         }
+
+
+        /******************************************************************************************/
+        /******************************************************************************************/
     }
 }

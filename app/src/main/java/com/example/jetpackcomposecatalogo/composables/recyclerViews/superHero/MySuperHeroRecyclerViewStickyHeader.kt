@@ -14,8 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model.SuperHero
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model.getSuperHeroes
+import com.example.jetpackcomposecatalogo.composables.model.SuperHero
+import com.example.jetpackcomposecatalogo.composables.model.getSuperHeroes
 
 /** Horizontal row, because can not show Vertical scroll in Main (have vertical scroll yet) **/
 @ExperimentalFoundationApi

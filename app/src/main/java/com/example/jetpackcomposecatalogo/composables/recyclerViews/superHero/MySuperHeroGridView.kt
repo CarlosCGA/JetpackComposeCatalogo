@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model.getSuperHeroes
+import com.example.jetpackcomposecatalogo.composables.model.getSuperHeroes
 
 @Composable
 fun MySuperHeroGridView() {

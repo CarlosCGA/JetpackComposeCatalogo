@@ -20,8 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model.SuperHero
-import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.model.getSuperHeroes
+import com.example.jetpackcomposecatalogo.composables.model.SuperHero
+import com.example.jetpackcomposecatalogo.composables.model.getSuperHeroes
 
 @Composable
 fun SuperHeroItem(superHero: SuperHero) {
