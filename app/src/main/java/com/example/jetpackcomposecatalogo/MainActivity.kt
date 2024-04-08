@@ -66,6 +66,8 @@ import com.example.jetpackcomposecatalogo.composables.dialogs.MyDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MyGoogleChangeAccountDialog
 import com.example.jetpackcomposecatalogo.composables.dialogs.MySimpleCustomDialog
 import com.example.jetpackcomposecatalogo.composables.model.Routes
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.MySimpleRecyclerView
+import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroGridView
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerView
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewStickyHeader
 import com.example.jetpackcomposecatalogo.composables.recyclerViews.superHero.MySuperHeroRecyclerViewWithButton
@@ -100,6 +102,14 @@ class MainActivity : ComponentActivity() {
 
                         composable(Routes.MyScrollableColumn.route) {
                             MyScrollableColumn()
+                        }
+
+                        composable(Routes.MySimpleRecyclerView.route) {
+                            MySimpleRecyclerView()
+                        }
+
+                        composable(Routes.MySuperHeroGridView.route) {
+                            MySuperHeroGridView()
                         }
 
                         composable(Routes.MyScaffold.route) {
@@ -344,18 +354,20 @@ fun AllMyContent(navigationController: NavHostController) {
         /************************          RECYCLERVIEWS            *******************************/
         /******************************************************************************************/
         /******************************************************************************************/
-        /*
         MyDivider(title = "MySimpleRecyclerView")
-        MySimpleRecyclerView()
-        */
+        Button(onClick = { navigationController.navigate(Routes.MySimpleRecyclerView.route) }) {
+            Text(text = "MySimpleRecyclerView")
+        }
 
         MyDivider(title = "MySuperHeroRecyclerView")
         MySuperHeroRecyclerView()
 
-        /*
         MyDivider(title = "MySuperHeroGridView")
-        MySuperHeroGridView()
-        */
+        Button(
+            enabled = false,
+            onClick = { navigationController.navigate(Routes.MySuperHeroGridView.route) }) {
+            Text(text = "MySuperHeroGridView")
+        }
 
         MyDivider(title = "MySuperHeroRecyclerViewWithButton")
         MySuperHeroRecyclerViewWithButton()

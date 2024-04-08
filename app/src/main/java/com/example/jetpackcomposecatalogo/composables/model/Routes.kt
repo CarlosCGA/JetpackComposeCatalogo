@@ -6,5 +6,7 @@ package com.example.jetpackcomposecatalogo.composables.model
 sealed class Routes(val route: String) {
     data object AllContent : Routes("AllContent")
     data object MyScrollableColumn : Routes("MyScrollableColumn")
+    data object MySimpleRecyclerView : Routes("MySimpleRecyclerView")
+    data object MySuperHeroGridView : Routes("MySuperHeroGridView")
     data object MyScaffold : Routes("MyScaffold")
 }
