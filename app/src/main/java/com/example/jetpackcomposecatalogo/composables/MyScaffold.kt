@@ -1,20 +1,32 @@
 package com.example.jetpackcomposecatalogo.composables
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
@@ -26,12 +38,14 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -56,6 +70,8 @@ fun MyScaffold(navigationController: NavHostController) {
     val snackBarState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
+    val scrollState = rememberLazyListState()
+
     Scaffold(
         modifier = Modifier.height(350.dp),
         snackbarHost = {
@@ -77,7 +93,8 @@ fun MyScaffold(navigationController: NavHostController) {
             LazyColumn(
                 // consume insets as scaffold doesn't do it by default
                 modifier = Modifier.consumeWindowInsets(innerPadding),
-                contentPadding = innerPadding
+                contentPadding = innerPadding,
+                state = scrollState
             ) {
                 items(count = 100) {
                     Box(
@@ -89,7 +106,9 @@ fun MyScaffold(navigationController: NavHostController) {
                 }
             }
         },
-        bottomBar = { MyBottomNavigation() }
+        bottomBar = { MyBottomNavigation() },
+        floatingActionButton = { MyFloatingActionButton(scrollState) },
+        floatingActionButtonPosition = FabPosition.End,
     )
 }
 
@@ -171,6 +190,49 @@ fun MyBottomNavigation() {
             )
         },
             label = { Text(text = "Profile") })
+    }
+}
+
+@Composable
+fun MyFloatingActionButton(scrollState: LazyListState) {
+    FloatingActionButton(
+        onClick = { },
+        contentColor = Color.Yellow,
+        containerColor = Color.Red
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                modifier = Modifier.size(20.dp),
+                imageVector = Icons.Filled.Create,
+                contentDescription = "Gmail FAB"
+            )
+
+            val showText by remember {
+                derivedStateOf {
+                    scrollState.firstVisibleItemIndex == 0
+                }
+            }
+
+            AnimatedVisibility(
+                visible = showText,
+                enter =
+                expandHorizontally(
+                    expandFrom = Alignment.End
+                ) + fadeIn(
+                    initialAlpha = 0f
+                ),
+                exit = shrinkHorizontally(shrinkTowards = Alignment.End) + fadeOut()
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 8.dp),
+                    text = "Gmail FAB"
+                )
+            }
+        }
     }
 }
 
