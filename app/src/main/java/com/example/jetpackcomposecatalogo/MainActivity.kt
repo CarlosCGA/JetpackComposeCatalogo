@@ -22,9 +22,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.jetpackcomposecatalogo.composables.MyArrangementColumn
 import com.example.jetpackcomposecatalogo.composables.MyArrangementRow
 import com.example.jetpackcomposecatalogo.composables.MyBadgeBox
@@ -41,6 +43,7 @@ import com.example.jetpackcomposecatalogo.composables.MyProgressBar
 import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
+import com.example.jetpackcomposecatalogo.composables.MyScreenWithInputArguments
 import com.example.jetpackcomposecatalogo.composables.MyScrollableColumn
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MySlider
@@ -112,9 +115,24 @@ class MainActivity : ComponentActivity() {
                             MySuperHeroGridView()
                         }
 
-                        composable(Routes.MyScaffold.route) {
-                            //MyScaffold(navigationController)
-                            MyDrawer(navigationController)
+                        composable(Routes.MyScaffold.route + "/{keyOfSimpleArgument}") { backStackEntry ->
+                            MyDrawer(
+                                navigationController,
+                                backStackEntry.arguments!!.getString("keyOfSimpleArgument")!!
+                            )
+                        }
+
+                        composable(
+                            Routes.MyListOfArgumentsPassThrough.route + "/{firstKeyOfArgumentList}/{secondKeyOfArgumentList}",
+                            listOf(
+                                navArgument("firstKeyOfArgumentList") { type = NavType.StringType },
+                                navArgument("secondKeyOfArgumentList") { type = NavType.IntType },
+                            )
+                        ) { backStackEntry ->
+                            MyScreenWithInputArguments(
+                                firstArgument = backStackEntry.arguments!!.getString("firstKeyOfArgumentList")!!,
+                                secondArgument = backStackEntry.arguments!!.getInt("secondKeyOfArgumentList")
+                            )
                         }
                     }
 
@@ -134,11 +152,14 @@ fun AllMyContent(navigationController: NavHostController) {
         /****************************          SCAFFOLD            ********************************/
         /******************************************************************************************/
         /******************************************************************************************/
+
         MyDivider(title = "MyScaffold")
-        Button(onClick = { navigationController.navigate(Routes.MyScaffold.route) }) {
+        Button(onClick = {
+            navigationController.navigate(Routes.MyScaffold.route + "/Argument title")
+        }
+        ) {
             Text(text = "MyScaffold")
         }
-
 
         /******************************************************************************************/
         /******************************************************************************************/
@@ -392,6 +413,19 @@ fun AllMyContent(navigationController: NavHostController) {
 
         /******************************************************************************************/
         /******************************************************************************************/
+
+        MyDivider(title = "MyListOfArgumentsPassedToOtherScreen")
+        Button(
+            onClick = {
+                navigationController.navigate(
+                    Routes.MyListOfArgumentsPassThrough.route +
+                            "/hola" +
+                            "/3"
+                )
+            }
+        ) {
+            Text(text = "MyListOfArgumentsPassThrough")
+        }
 
     }
 }

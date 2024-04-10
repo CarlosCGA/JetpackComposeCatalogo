@@ -9,4 +9,5 @@ sealed class Routes(val route: String) {
     data object MySimpleRecyclerView : Routes("MySimpleRecyclerView")
     data object MySuperHeroGridView : Routes("MySuperHeroGridView")
     data object MyScaffold : Routes("MyScaffold")
+    data object MyListOfArgumentsPassThrough : Routes("MyListOfArgumentsPassThrough")
 }

@@ -63,16 +63,18 @@ import com.example.jetpackcomposecatalogo.composables.model.Routes
 import kotlinx.coroutines.launch
 
 @Composable
-fun MyDrawer(navigationController: NavHostController) {
+fun MyDrawer(navigationController: NavHostController, topAppBarTitle: String) {
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            ModalDrawerSheet(modifier = Modifier
-                .height(725.dp)
-                .padding(end = 32.dp)) {
+            ModalDrawerSheet(
+                modifier = Modifier
+                    .height(725.dp)
+                    .padding(end = 32.dp)
+            ) {
                 Spacer(modifier = Modifier.size(16.dp))
 
                 NavigationDrawerItem(
@@ -98,14 +100,19 @@ fun MyDrawer(navigationController: NavHostController) {
         gesturesEnabled = false
     ) {
         MyScaffold(
-            navigationController = navigationController
+            navigationController = navigationController,
+            topAppBarTitle = topAppBarTitle
         ) { coroutineScope.launch { drawerState.open() } }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyScaffold(navigationController: NavHostController, onClickDrawerButton: () -> Unit) {
+fun MyScaffold(
+    navigationController: NavHostController,
+    topAppBarTitle: String,
+    onClickDrawerButton: () -> Unit
+) {
     val colors = listOf(
         Color(0xFFffd7d7.toInt()),
         Color(0xFFffe9d6.toInt()),
@@ -134,6 +141,7 @@ fun MyScaffold(navigationController: NavHostController, onClickDrawerButton: () 
         topBar = {
             MyTopAppBar(
                 navigationController = navigationController,
+                topAppBarTitle = topAppBarTitle,
                 { coroutineScope.launch { snackBarState.showSnackbar("Click on $it") } }
             ) { coroutineScope.launch { onClickDrawerButton.invoke() } }
         },
@@ -164,11 +172,12 @@ fun MyScaffold(navigationController: NavHostController, onClickDrawerButton: () 
 @Composable
 fun MyTopAppBar(
     navigationController: NavHostController,
+    topAppBarTitle: String,
     onClickIcon: (String) -> Unit,
     onClickDrawerButton: () -> Unit
 ) {
     TopAppBar(
-        title = { Text("Simple Scaffold Screen") },
+        title = { Text(topAppBarTitle) },
         navigationIcon = {
             IconButton(
                 onClick = { onClickDrawerButton.invoke() }
@@ -285,5 +294,5 @@ fun MyFloatingActionButton(scrollState: LazyListState) {
 @Composable
 fun PreviewMyScaffold() {
     val navigationController = rememberNavController()
-    MyDrawer(navigationController)
+    MyDrawer(navigationController, "Top App Bar Title")
 }
