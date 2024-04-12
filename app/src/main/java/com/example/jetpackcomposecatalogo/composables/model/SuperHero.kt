@@ -12,10 +12,11 @@ data class SuperHero(
 
 fun getSuperHeroes(): List<SuperHero> {
     return listOf(
+        SuperHero("Flash", "Bartholomew Henry", "DC", R.drawable.flash),
         SuperHero("Batman", "Bruce Wayne", "DC", R.drawable.batman),
         SuperHero("Iron Man", "Downey Jr.", "Marvel", R.drawable.avatar),
         SuperHero("Spiderman", "Petter Parker", "Marvel", R.drawable.spiderman),
         SuperHero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
-        SuperHero("Thor", "Thor Odinson", "Marvel", R.drawable.thor),
+        SuperHero("Thor", "Thor Odinson", "Marvel", R.drawable.thor)
     )
 }
