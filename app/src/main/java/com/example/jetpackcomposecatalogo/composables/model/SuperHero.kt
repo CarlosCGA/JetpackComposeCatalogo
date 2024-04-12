@@ -19,7 +19,7 @@ fun getSuperHeroes(): List<SuperHero> {
         SuperHero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
         SuperHero("Thor", "Thor Odinson", "Marvel", R.drawable.thor),
         SuperHero("Green Lantern", "Alan Scott", "DC", R.drawable.green_lantern),
-        SuperHero("Daredevil", "Matt Murdock", "Marvel", R.drawable.thor),
+        SuperHero("Daredevil", "Matt Murdock", "Marvel", R.drawable.daredevil),
         SuperHero("Wonderwoman", "Charles Moulton", "DC", R.drawable.wonder_woman),
     )
 }
