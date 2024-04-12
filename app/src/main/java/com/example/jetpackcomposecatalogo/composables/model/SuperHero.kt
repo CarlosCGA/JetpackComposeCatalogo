@@ -15,8 +15,11 @@ fun getSuperHeroes(): List<SuperHero> {
         SuperHero("Flash", "Bartholomew Henry", "DC", R.drawable.flash),
         SuperHero("Batman", "Bruce Wayne", "DC", R.drawable.batman),
         SuperHero("Iron Man", "Downey Jr.", "Marvel", R.drawable.avatar),
-        SuperHero("Spiderman", "Petter Parker", "Marvel", R.drawable.spiderman),
+        SuperHero("Spider-man", "Petter Parker", "Marvel", R.drawable.spiderman),
         SuperHero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
-        SuperHero("Thor", "Thor Odinson", "Marvel", R.drawable.thor)
+        SuperHero("Thor", "Thor Odinson", "Marvel", R.drawable.thor),
+        SuperHero("Green Lantern", "Alan Scott", "DC", R.drawable.green_lantern),
+        SuperHero("Daredevil", "Matt Murdock", "Marvel", R.drawable.thor),
+        SuperHero("Wonderwoman", "Charles Moulton", "DC", R.drawable.wonder_woman),
     )
 }
