@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -44,6 +43,7 @@ import com.example.jetpackcomposecatalogo.composables.MyRadioButton
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonList
 import com.example.jetpackcomposecatalogo.composables.MyRadioButtonListPro
 import com.example.jetpackcomposecatalogo.composables.MyScreenWithInputArguments
+import com.example.jetpackcomposecatalogo.composables.MyScreenWithOptionalInputArguments
 import com.example.jetpackcomposecatalogo.composables.MyScrollableColumn
 import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MySlider
@@ -123,15 +123,24 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(
-                            Routes.MyListOfArgumentsPassThrough.route + "/{firstKeyOfArgumentList}/{secondKeyOfArgumentList}",
-                            listOf(
-                                navArgument("firstKeyOfArgumentList") { type = NavType.StringType },
-                                navArgument("secondKeyOfArgumentList") { type = NavType.IntType },
-                            )
+                            Routes.MyListOfArgumentsPassThrough.route + "/{firstKeyOfArgumentList}/{secondKeyOfArgumentList}"
                         ) { backStackEntry ->
                             MyScreenWithInputArguments(
                                 firstArgument = backStackEntry.arguments!!.getString("firstKeyOfArgumentList")!!,
                                 secondArgument = backStackEntry.arguments!!.getInt("secondKeyOfArgumentList")
+                            )
+                        }
+
+                        composable(
+                            Routes.MyListOfOptionalArgumentsPassThrough.route,
+                            arguments = listOf(
+                                navArgument("name") { defaultValue = "Towel" },
+                                navArgument("age") { defaultValue = 0 },
+                            )
+                        ) { backStackEntry ->
+                            MyScreenWithOptionalInputArguments(
+                                firstArgument = backStackEntry.arguments!!.getString("name"),
+                                secondArgument = backStackEntry.arguments!!.getInt("age")
                             )
                         }
                     }
@@ -147,23 +156,6 @@ class MainActivity : ComponentActivity() {
 fun AllMyContent(navigationController: NavHostController) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        /******************************************************************************************/
-        /******************************************************************************************/
-        /****************************          SCAFFOLD            ********************************/
-        /******************************************************************************************/
-        /******************************************************************************************/
-
-        MyDivider(title = "MyScaffold")
-        Button(onClick = {
-            navigationController.navigate(Routes.MyScaffold.route + "/Argument title")
-        }
-        ) {
-            Text(text = "MyScaffold")
-        }
-
-        /******************************************************************************************/
-        /******************************************************************************************/
-
         MyDivider(title = "MyBox")
         MyBox()
 
@@ -414,13 +406,49 @@ fun AllMyContent(navigationController: NavHostController) {
         /******************************************************************************************/
         /******************************************************************************************/
 
-        MyDivider(title = "MyListOfArgumentsPassedToOtherScreen")
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /****************************          SCAFFOLD            ********************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+        MyDivider(title = "MyScaffold")
+        Button(onClick = {
+            navigationController.navigate(Routes.MyScaffold.route + "/Argument title")
+        }
+        ) {
+            Text(text = "MyScaffold")
+        }
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /*******************          NAVIGATION & ARGUMENTS            ***************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+        MyDivider(title = "MyListOfArgumentsSentThrough")
         Button(
             onClick = {
                 navigationController.navigate(
                     Routes.MyListOfArgumentsPassThrough.route +
-                            "/hola" +
+                            "/hello" +
                             "/3"
+                )
+            }
+        ) {
+            Text(text = "MyListOfArgumentsPassThrough")
+        }
+
+        MyDivider(title = "MyListOfOptionalArgumentsSentThrough")
+        Button(
+            onClick = {
+                navigationController.navigate(
+                    Routes.MyListOfOptionalArgumentsPassThrough.createRoute("Rabbit", 3)
                 )
             }
         ) {

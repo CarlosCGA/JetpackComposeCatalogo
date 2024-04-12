@@ -10,4 +10,8 @@ sealed class Routes(val route: String) {
     data object MySuperHeroGridView : Routes("MySuperHeroGridView")
     data object MyScaffold : Routes("MyScaffold")
     data object MyListOfArgumentsPassThrough : Routes("MyListOfArgumentsPassThrough")
+
+    data object MyListOfOptionalArgumentsPassThrough : Routes("MyListOfOptionalArgumentsPassThrough?name={name}?age={age}") {
+        fun createRoute(name: String, age: Int) = "MyListOfOptionalArgumentsPassThrough?name=$name?age=$age"
+    }
 }

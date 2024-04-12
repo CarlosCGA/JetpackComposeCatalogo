@@ -16,9 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MyScreenWithInputArguments(
-    firstArgument: String,
-    secondArgument: Int
+fun MyScreenWithOptionalInputArguments(
+    firstArgument: String?,
+    secondArgument: Int?
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -33,7 +33,7 @@ fun MyScreenWithInputArguments(
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "FIRST ARGUMENT", fontWeight = FontWeight.Bold)
-                Text(text = firstArgument)
+                Text(text = firstArgument.toString())
             }
         }
 
@@ -54,6 +54,6 @@ fun MyScreenWithInputArguments(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewMyScreenWithInputArguments() {
-    MyScreenWithInputArguments("hello", 3)
+fun PreviewMyScreenWithOptionalInputArguments() {
+    MyScreenWithOptionalInputArguments("hello", 3)
 }
