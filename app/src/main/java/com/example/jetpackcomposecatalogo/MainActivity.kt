@@ -50,6 +50,7 @@ import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MySwitch
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
+import com.example.jetpackcomposecatalogo.composables.buttons.MyButtons
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.checkBox.CheckBoxInfo
@@ -226,6 +227,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyTextButton")
         MyTextButton()
+
+        MyDivider(title = "MyButtons")
+        MyButtons()
 
         MyDivider(title = "MyImage")
         MyImage()
