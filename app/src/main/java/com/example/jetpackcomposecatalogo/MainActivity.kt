@@ -55,6 +55,7 @@ import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedColor
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedSizeAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyColorAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MySizeAnimation
+import com.example.jetpackcomposecatalogo.composables.animations.MyVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButtons
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
@@ -185,6 +186,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyAdvancedSizeAnimation")
         MyAdvancedSizeAnimation()
+
+        MyDivider(title = "MyVisibilityAnimation")
+        MyVisibilityAnimation()
 
         /******************************************************************************************/
         /******************************************************************************************/
