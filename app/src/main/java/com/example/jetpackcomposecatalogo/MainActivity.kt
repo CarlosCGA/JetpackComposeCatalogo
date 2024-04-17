@@ -173,37 +173,6 @@ fun AllMyContent(navigationController: NavHostController) {
 
         /******************************************************************************************/
         /******************************************************************************************/
-        /***********************          ANIMATIONS             **********************************/
-        /******************************************************************************************/
-        /******************************************************************************************/
-
-        MyDivider(title = "MyColorAnimation")
-        MyColorAnimation()
-
-        MyDivider(title = "MyAdvancedColorAnimation")
-        MyAdvancedColorAnimation()
-
-        MyDivider(title = "MySizeAnimation")
-        MySizeAnimation()
-
-        MyDivider(title = "MyAdvancedSizeAnimation")
-        MyAdvancedSizeAnimation()
-
-        MyDivider(title = "MyVisibilityAnimation")
-        MyVisibilityAnimation()
-
-        MyDivider(title = "MyAdvancedVisibilityAnimation")
-        MyAdvancedVisibilityAnimation()
-
-        MyDivider(title = "MyCrossfadeAnimation")
-        MyCrossfadeAnimation()
-
-        /******************************************************************************************/
-        /******************************************************************************************/
-
-
-        /******************************************************************************************/
-        /******************************************************************************************/
         /**************************          BOX             **************************************/
         /******************************************************************************************/
         /******************************************************************************************/
@@ -690,6 +659,37 @@ fun AllMyContent(navigationController: NavHostController) {
         ) {
             Text(text = "MyListOfArgumentsPassThrough")
         }
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /***********************          ANIMATIONS             **********************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+        MyDivider(title = "MyColorAnimation")
+        MyColorAnimation()
+
+        MyDivider(title = "MyAdvancedColorAnimation")
+        MyAdvancedColorAnimation()
+
+        MyDivider(title = "MySizeAnimation")
+        MySizeAnimation()
+
+        MyDivider(title = "MyAdvancedSizeAnimation")
+        MyAdvancedSizeAnimation()
+
+        MyDivider(title = "MyVisibilityAnimation")
+        MyVisibilityAnimation()
+
+        MyDivider(title = "MyAdvancedVisibilityAnimation")
+        MyAdvancedVisibilityAnimation()
+
+        MyDivider(title = "MyCrossfadeAnimation")
+        MyCrossfadeAnimation()
 
         /******************************************************************************************/
         /******************************************************************************************/
