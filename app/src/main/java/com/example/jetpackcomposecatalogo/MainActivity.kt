@@ -53,6 +53,7 @@ import com.example.jetpackcomposecatalogo.composables.MySwitch
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedColorAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedSizeAnimation
+import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyColorAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MySizeAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyVisibilityAnimation
@@ -189,6 +190,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyVisibilityAnimation")
         MyVisibilityAnimation()
+
+        MyDivider(title = "MyAdvancedVisibilityAnimation")
+        MyAdvancedVisibilityAnimation()
 
         /******************************************************************************************/
         /******************************************************************************************/
