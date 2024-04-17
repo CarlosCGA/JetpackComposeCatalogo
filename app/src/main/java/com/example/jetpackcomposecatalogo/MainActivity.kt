@@ -51,6 +51,7 @@ import com.example.jetpackcomposecatalogo.composables.MyScrollableRow
 import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MySwitch
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
+import com.example.jetpackcomposecatalogo.composables.animations.MyColorAnimation
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButtons
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
@@ -163,6 +164,19 @@ class MainActivity : ComponentActivity() {
 fun AllMyContent(navigationController: NavHostController) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+        /***********************          ANIMATIONS             **********************************/
+        /******************************************************************************************/
+        /******************************************************************************************/
+
+        MyDivider(title = "MyColorAnimation")
+        MyColorAnimation()
+
+        /******************************************************************************************/
+        /******************************************************************************************/
+
 
         /******************************************************************************************/
         /******************************************************************************************/
