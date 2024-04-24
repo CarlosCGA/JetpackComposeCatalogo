@@ -52,6 +52,7 @@ import com.example.jetpackcomposecatalogo.composables.MySlider
 import com.example.jetpackcomposecatalogo.composables.MySwitch
 import com.example.jetpackcomposecatalogo.composables.MyWeightRow
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedColorAnimation
+import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedOnPressAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedSizeAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyColorAnimation
@@ -694,6 +695,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyOnPressAnimation")
         MyOnPressAnimation()
+
+        MyDivider(title = "MyAdvancedOnPressAnimation")
+        MyAdvancedOnPressAnimation()
 
         /******************************************************************************************/
         /******************************************************************************************/
