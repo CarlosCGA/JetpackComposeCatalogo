@@ -28,15 +28,16 @@ fun MyOnPressAnimation() {
         label = "size animation"
     )
 
+
     Box(modifier = Modifier
         .size(animateSize)
         .background(Color.Red)
         .pointerInput(Unit) {
             detectTapGestures(
                 onPress = {
+                    //start
                     smallAnimateSize = true
 
-                    //start
                     val released = try {
                         tryAwaitRelease()
                     } catch (c: CancellationException) {
