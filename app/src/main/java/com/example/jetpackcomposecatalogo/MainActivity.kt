@@ -56,6 +56,7 @@ import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedSizeA
 import com.example.jetpackcomposecatalogo.composables.animations.MyAdvancedVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyColorAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyCrossfadeAnimation
+import com.example.jetpackcomposecatalogo.composables.animations.MyOnPressAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MySizeAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
@@ -690,6 +691,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyCrossfadeAnimation")
         MyCrossfadeAnimation()
+
+        MyDivider(title = "MyOnPressAnimation")
+        MyOnPressAnimation()
 
         /******************************************************************************************/
         /******************************************************************************************/
