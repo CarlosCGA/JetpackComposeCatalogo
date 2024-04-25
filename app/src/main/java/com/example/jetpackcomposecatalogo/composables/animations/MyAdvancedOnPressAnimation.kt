@@ -24,11 +24,11 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.cancellation.CancellationException
 
 
-const val MAX_SIZE = 100F
-const val MIN_SIZE = MAX_SIZE - 15F
-const val DELTA_1 = 7.5F
-const val DELTA_2 = 5F
-const val DELTA_3 = 2.5F
+const val DEFAULT_SIZE = 100F
+const val PRESS_SIZE = (DEFAULT_SIZE - (DEFAULT_SIZE*0.15)).toFloat()
+const val DELTA_1 = (DEFAULT_SIZE*0.075).toFloat()
+const val DELTA_2 = (DEFAULT_SIZE*0.05).toFloat()
+const val DELTA_3 = (DEFAULT_SIZE*0.025).toFloat()
 
 const val DURATION = 100
 
@@ -37,7 +37,7 @@ const val DURATION = 100
 fun MyAdvancedOnPressAnimation() {
 
     var targetSize by rememberSaveable {
-        mutableFloatStateOf(MAX_SIZE)
+        mutableFloatStateOf(DEFAULT_SIZE)
     }
     val size = animateFloatAsState(targetValue = targetSize, label = "animate size")
 
@@ -80,26 +80,26 @@ suspend fun animateSmallWithBounce(
             coroutineScope {
                 launch {
                     animate(
-                        MAX_SIZE,
-                        MIN_SIZE - DELTA_1,
+                        DEFAULT_SIZE,
+                        PRESS_SIZE - DELTA_1,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MIN_SIZE - DELTA_1,
-                        MIN_SIZE + DELTA_2,
+                        PRESS_SIZE - DELTA_1,
+                        PRESS_SIZE + DELTA_2,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MIN_SIZE + DELTA_2,
-                        MIN_SIZE - DELTA_3,
+                        PRESS_SIZE + DELTA_2,
+                        PRESS_SIZE - DELTA_3,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MIN_SIZE - DELTA_3,
-                        MIN_SIZE,
+                        PRESS_SIZE - DELTA_3,
+                        PRESS_SIZE,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
@@ -118,26 +118,26 @@ suspend fun animateBigWithBounce(
             coroutineScope {
                 launch {
                     animate(
-                        MIN_SIZE,
-                        MAX_SIZE + DELTA_1,
+                        PRESS_SIZE,
+                        DEFAULT_SIZE + DELTA_1,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MAX_SIZE + DELTA_1,
-                        MAX_SIZE - DELTA_2,
+                        DEFAULT_SIZE + DELTA_1,
+                        DEFAULT_SIZE - DELTA_2,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MAX_SIZE - DELTA_2,
-                        MAX_SIZE + DELTA_3,
+                        DEFAULT_SIZE - DELTA_2,
+                        DEFAULT_SIZE + DELTA_3,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
                     animate(
-                        MAX_SIZE + DELTA_3,
-                        MAX_SIZE,
+                        DEFAULT_SIZE + DELTA_3,
+                        DEFAULT_SIZE,
                         animationSpec = tween(DURATION),
                         block = { value, _ -> onNewSize(value) }
                     )
