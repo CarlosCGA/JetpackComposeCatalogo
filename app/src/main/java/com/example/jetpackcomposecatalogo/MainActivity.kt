@@ -64,6 +64,7 @@ import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButtons
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
+import com.example.jetpackcomposecatalogo.composables.buttons.MyToggleButton
 import com.example.jetpackcomposecatalogo.composables.buttons.floatingActionButtons.MyExtendedFAB
 import com.example.jetpackcomposecatalogo.composables.buttons.floatingActionButtons.MyFAB
 import com.example.jetpackcomposecatalogo.composables.buttons.floatingActionButtons.MyLargeFAB
@@ -329,6 +330,9 @@ fun AllMyContent(navigationController: NavHostController) {
             MyLargeFAB()
             MyExtendedFAB()
         }
+
+        MyDivider(title = "MyToggleButtons")
+        MyToggleButton()
 
         /******************************************************************************************/
         /******************************************************************************************/
