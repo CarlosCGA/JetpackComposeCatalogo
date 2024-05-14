@@ -62,6 +62,7 @@ import com.example.jetpackcomposecatalogo.composables.animations.MySizeAnimation
 import com.example.jetpackcomposecatalogo.composables.animations.MyVisibilityAnimation
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyButtons
+import com.example.jetpackcomposecatalogo.composables.buttons.MyChip
 import com.example.jetpackcomposecatalogo.composables.buttons.MyOutlinedButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyTextButton
 import com.example.jetpackcomposecatalogo.composables.buttons.MyToggleButton
@@ -333,6 +334,9 @@ fun AllMyContent(navigationController: NavHostController) {
 
         MyDivider(title = "MyToggleButtons")
         MyToggleButton()
+
+        MyDivider(title = "MyChip")
+        MyChip()
 
         /******************************************************************************************/
         /******************************************************************************************/
