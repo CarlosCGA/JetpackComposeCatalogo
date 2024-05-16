@@ -1,6 +1,8 @@
 package com.example.jetpackcomposecatalogo.composables.buttons
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -29,10 +31,10 @@ fun MyChip() {
         selected = isSelected,
         onClick = { isSelected = !isSelected },
         leadingIcon = {
-            AnimatedVisibility(visible = !isSelected) {
+            AnimatedVisibility(visible = !isSelected, enter = fadeIn(), exit = fadeOut()) {
                 Icon(imageVector = Icons.Outlined.Menu, contentDescription = "off")
             }
-            AnimatedVisibility(visible = isSelected) {
+            AnimatedVisibility(visible = isSelected, enter = fadeIn(), exit = fadeOut()) {
                 Icon(imageVector = Icons.Outlined.Done, contentDescription = "on")
             }
         },
