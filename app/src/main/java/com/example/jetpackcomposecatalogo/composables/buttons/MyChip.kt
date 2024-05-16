@@ -32,10 +32,10 @@ fun MyChip() {
         onClick = { isSelected = !isSelected },
         leadingIcon = {
             AnimatedVisibility(visible = !isSelected, enter = fadeIn(), exit = fadeOut()) {
-                Icon(imageVector = Icons.Outlined.Menu, contentDescription = "off")
+                Icon(imageVector = Icons.Outlined.Menu, contentDescription = "off", tint = Color.Magenta)
             }
             AnimatedVisibility(visible = isSelected, enter = fadeIn(), exit = fadeOut()) {
-                Icon(imageVector = Icons.Outlined.Done, contentDescription = "on")
+                Icon(imageVector = Icons.Outlined.Done, contentDescription = "on", tint = Color.White)
             }
         },
         label = {
@@ -43,6 +43,10 @@ fun MyChip() {
         },
         shape = CircleShape,
         colors = FilterChipDefaults.filterChipColors(
+            selectedLeadingIconColor = Color.White,
+            selectedLabelColor = Color.White,
+            labelColor = Color.Gray,
+            selectedContainerColor = Color.Magenta
         )
         /*
          private val containerColor: Color,
